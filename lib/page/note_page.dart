@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -67,8 +68,13 @@ class _NotesPageState extends State<NotesPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: Colors.black,
         onPressed: () async {
-          await Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => AddEditNotePage()));
+          await Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) =>AddEditNotePage(),
+                    ),
+                  );
+          // await CupertinoPageRoute(builder: (context) => AddEditNotePage());
           refreshNotes();
         },
         child: Icon(
@@ -85,8 +91,17 @@ class _NotesPageState extends State<NotesPage> {
           final note = notes[index];
           return GestureDetector(
             onTap: () async {
-              await Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => NoteDetailPage(noteId: note.id!)));
+              await Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => NoteDetailPage(noteId: note.id!),
+                    ),
+                  );
+              // await CupertinoPageRoute(
+              //     builder: (context) => );
+
+              // await Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => ));
               refreshNotes();
             },
             child: NoteCardWidget(note: note, index: index),

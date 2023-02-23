@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -89,10 +90,12 @@ class Note_DetailPageState extends State<NoteDetailPage> {
   Widget editButton() => IconButton(
         onPressed: () async {
           if (isLoading) return;
-          print(".........................." + note.title);
-          await Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => AddEditNotePage(note: note),
-          ));
+          await Navigator.push(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => AddEditNotePage(note: note),
+            ),
+          );
 
           refreshNote();
         },
