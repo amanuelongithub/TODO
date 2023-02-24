@@ -58,6 +58,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                 TextFormField(
                   controller: titlecontroller,
                   cursorColor: Colors.grey,
+                  maxLength: 10,
                   decoration: InputDecoration(
                     hintText: 'Title',
                     fillColor: Colors.grey,
@@ -109,7 +110,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                             borderRadius: BorderRadius.circular(20))),
                     onPressed: addOreditNote,
                     child: Text(
-                      widget.note != null?"Update":"Save",
+                      widget.note != null ? "Update" : "Save",
                       style: TextStyle(fontSize: 18),
                     ))
               ]),
