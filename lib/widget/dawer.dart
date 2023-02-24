@@ -14,44 +14,28 @@ class NavigationDrawerWidget extends StatelessWidget {
         child: Material(
             child: Column(
           children: <Widget>[
-            const SizedBox(
-              height: 50,
-            ),
             Container(
               alignment: Alignment.center,
-              height: 90,
+              height: 180,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 139, 139, 139),
+                borderRadius: BorderRadius.circular(0),
+              ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: ListTile(
-                  contentPadding: const EdgeInsets.only(left: 30),
-                  onTap: () {},
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  leading: CircleAvatar(
-                    radius: 35,
-                    backgroundColor: Colors.amber,
-                    backgroundImage: NetworkImage(
-                      'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600',
-                    ),
-                  ),
-                  title: Text(
-                    'Olivia',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    'student',
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromARGB(255, 225, 225, 225)),
+                  padding: const EdgeInsets.all(25.0),
+                  child: Text(
+                    "Uer name here",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),
-            ),
-            Divider(
-              thickness: 2,
-              color: Color.fromARGB(131, 224, 224, 224),
             ),
             const SizedBox(
               height: 10,
@@ -70,25 +54,7 @@ class NavigationDrawerWidget extends StatelessWidget {
             ),
             buildMenuItem(
                 context: context,
-                text: 'Notification',
-                size: 20,
-                Imageurl: 'notification',
-                onClicked: () => selectedItem(context, 1)),
-            const SizedBox(
-              height: 15,
-            ),
-            buildMenuItem(
-                context: context,
-                text: 'Todo',
-                size: 20,
-                Imageurl: 'todo',
-                onClicked: () => selectedItem(context, 2)),
-            const SizedBox(
-              height: 15,
-            ),
-            buildMenuItem(
-                context: context,
-                text: 'Video',
+                text: 'font',
                 size: 20,
                 Imageurl: 'video',
                 onClicked: () => selectedItem(context, 2)),

@@ -16,12 +16,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Norda',
         appBarTheme: const AppBarTheme(
             elevation: 0,
             backgroundColor: Colors.black,
+            
             titleTextStyle: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
+                fontFamily: 'Efimah',
                 fontWeight: FontWeight.bold)),
         primaryColor: Colors.black,
       ),
