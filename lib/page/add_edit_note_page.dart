@@ -48,7 +48,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Add note ",
+           widget.note != null?"Update note": "Add note ",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
