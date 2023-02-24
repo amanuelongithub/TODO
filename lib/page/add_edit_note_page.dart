@@ -109,7 +109,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                             borderRadius: BorderRadius.circular(20))),
                     onPressed: addOreditNote,
                     child: Text(
-                      "Save",
+                      widget.note != null?"Update":"Save",
                       style: TextStyle(fontSize: 18),
                     ))
               ]),
