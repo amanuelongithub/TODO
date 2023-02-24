@@ -74,9 +74,13 @@ flutter:
       fonts:
         - asset: assets/font/Efimah.otf
           style: normal
-    - family: Norda
+    - family: Cochin
       fonts:
-        - asset: assets/font/Norda.otf
+        - asset: assets/font/Cochin.otf
+          style: normal
+    - family: Cochin-Bold
+      fonts:
+        - asset: assets/font/Cochin-Bold.otf
           style: normal
   # fonts:
   #   - family: Schyler

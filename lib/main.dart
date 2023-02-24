@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Norda',
+        fontFamily: 'Cochin',
+        
         appBarTheme: const AppBarTheme(
             elevation: 0,
             backgroundColor: Colors.black,
