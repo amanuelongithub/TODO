@@ -8,6 +8,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:todo_app/page/add_edit_note_page.dart';
 import 'package:todo_app/page/note_detail.dart';
 
+import '../widget/dawer.dart';
 import '../widget/note_card_widget.dart';
 
 class NotesPage extends StatefulWidget {
@@ -18,6 +19,7 @@ class NotesPage extends StatefulWidget {
 }
 
 class _NotesPageState extends State<NotesPage> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   late List<Note> notes;
   bool isLoading = false;
 
@@ -46,7 +48,15 @@ class _NotesPageState extends State<NotesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(
+        elevation: 0,
+        leading: InkResponse(
+            radius: 20,
+            splashColor: Colors.grey,
+            onTap: () => _scaffoldKey.currentState?.openDrawer(),
+            child: Icon(Icons.menu, color: Colors.white)),
         title: Text(
           "TODO",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -69,11 +79,11 @@ class _NotesPageState extends State<NotesPage> {
         backgroundColor: Colors.black,
         onPressed: () async {
           await Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (context) =>AddEditNotePage(),
-                    ),
-                  );
+            context,
+            CupertinoPageRoute(
+              builder: (context) => AddEditNotePage(),
+            ),
+          );
           // await CupertinoPageRoute(builder: (context) => AddEditNotePage());
           refreshNotes();
         },
@@ -92,11 +102,11 @@ class _NotesPageState extends State<NotesPage> {
           return GestureDetector(
             onTap: () async {
               await Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (context) => NoteDetailPage(noteId: note.id!),
-                    ),
-                  );
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => NoteDetailPage(noteId: note.id!),
+                ),
+              );
               // await CupertinoPageRoute(
               //     builder: (context) => );
 

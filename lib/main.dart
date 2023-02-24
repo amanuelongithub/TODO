@@ -15,14 +15,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
+            elevation: 0,
             backgroundColor: Colors.black,
-            titleTextStyle: TextStyle(color: Colors.white, fontSize: 18)),
+            titleTextStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold)),
         primaryColor: Colors.black,
       ),
-
       home: const SplashScreen(),
     );
   }
@@ -34,14 +36,14 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-        splash: Image.asset('assets/img/splash.png'),
-        duration: 500,
-        splashIconSize: 200,
-        splashTransition: SplashTransition.scaleTransition,
-        animationDuration: Duration(milliseconds: 1500),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        pageTransitionType: PageTransitionType.topToBottom,
-        nextScreen: const NotesPage(),
+      splash: Image.asset('assets/img/splash.png'),
+      duration: 500,
+      splashIconSize: 200,
+      splashTransition: SplashTransition.scaleTransition,
+      animationDuration: Duration(milliseconds: 1500),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      pageTransitionType: PageTransitionType.topToBottom,
+      nextScreen: const NotesPage(),
     );
   }
 }
