@@ -18,7 +18,7 @@ class NavigationDrawerWidget extends StatelessWidget {
               alignment: Alignment.center,
               height: 180,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 139, 139, 139),
+                color: Color.fromARGB(255, 0, 0, 0),
                 borderRadius: BorderRadius.circular(0),
               ),
               child: Padding(
@@ -30,9 +30,13 @@ class NavigationDrawerWidget extends StatelessWidget {
                       color: Color.fromARGB(255, 225, 225, 225)),
                   padding: const EdgeInsets.all(25.0),
                   child: Text(
-                    "Uer name here",
+                    "TODO",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Efimah",
+                    ),
                   ),
                 ),
               ),
@@ -47,16 +51,25 @@ class NavigationDrawerWidget extends StatelessWidget {
                 context: context,
                 text: 'Home',
                 size: 20,
-                Imageurl: 'home',
+                icons: Icons.home,
                 onClicked: () => selectedItem(context, 0)),
             const SizedBox(
               height: 15,
             ),
             buildMenuItem(
                 context: context,
-                text: 'font',
+                text: 'Favourites',
                 size: 20,
-                Imageurl: 'video',
+                icons: Icons.favorite,
+                onClicked: () => selectedItem(context, 2)),
+            const SizedBox(
+              height: 10,
+            ),
+            buildMenuItem(
+                context: context,
+                text: 'Recycle bin',
+                size: 20,
+                icons: Icons.recycling_outlined,
                 onClicked: () => selectedItem(context, 2)),
             const SizedBox(
               height: 10,
@@ -66,13 +79,16 @@ class NavigationDrawerWidget extends StatelessWidget {
                 context: context,
                 text: 'Setting',
                 size: 20,
-                Imageurl: 'settings',
+                icons: Icons.settings,
                 onClicked: () => selectedItem(context, 4)),
+            const SizedBox(
+              height: 10,
+            ),
             buildMenuItem(
                 context: context,
                 text: 'Help',
                 size: 20,
-                Imageurl: 'help',
+                icons: Icons.help,
                 onClicked: () => selectedItem(context, 4)),
           ],
         )),
@@ -83,7 +99,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   Widget buildMenuItem(
       {String? text,
       double? size,
-      String? Imageurl,
+      IconData? icons,
       VoidCallback? onClicked,
       BuildContext? context}) {
     final color = Color.fromARGB(255, 130, 130, 130);
@@ -95,16 +111,19 @@ class NavigationDrawerWidget extends StatelessWidget {
         onTap: onClicked,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         tileColor:
-            Imageurl == 'home' ? Color.fromARGB(141, 207, 207, 207) : null,
+            icons == Icons.home ? Color.fromARGB(141, 207, 207, 207) : null,
         leading: Container(
             width: 30,
             height: 30,
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 235, 235, 235),
+                color: icons == Icons.home
+                    ? Colors.black
+                    : Color.fromARGB(255, 215, 215, 215),
                 borderRadius: BorderRadius.circular(8)),
             child: Icon(
-              Icons.home,
-              color: Colors.black,
+              icons,
+              color: icons == Icons.home ? Colors.white : Colors.black,
+              size: 20,
             )),
         title: Text(
           text!,

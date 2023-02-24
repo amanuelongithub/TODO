@@ -47,7 +47,10 @@ class AddEditNotePageState extends State<AddEditNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("TO DO"),
+          title: Text(
+            "Add note ",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
         body: Form(
             key: formKey,
@@ -111,7 +114,8 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                     onPressed: addOreditNote,
                     child: Text(
                       widget.note != null ? "Update" : "Save",
-                      style: TextStyle(fontSize: 18),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ))
               ]),
             )));
