@@ -46,7 +46,7 @@ class SplashScreen extends StatelessWidget {
       splashTransition: SplashTransition.scaleTransition,
       animationDuration: Duration(milliseconds: 1500),
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      pageTransitionType: PageTransitionType.topToBottom,
+      pageTransitionType: PageTransitionType.fade,
       nextScreen: const NotesPage(),
     );
   }
