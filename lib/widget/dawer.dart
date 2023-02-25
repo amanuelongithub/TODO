@@ -59,9 +59,9 @@ class NavigationDrawerWidget extends StatelessWidget {
               ),
               buildMenuItem(
                   context: context,
-                  text: 'Favourites',
+                  text: 'Boockmarck',
                   size: 20,
-                  icons: Icons.favorite,
+                  icons: Icons.bookmark,
                   onClicked: () => selectedItem(context, 2)),
               const SizedBox(
                 height: 10,
@@ -91,7 +91,6 @@ class NavigationDrawerWidget extends StatelessWidget {
                   size: 20,
                   icons: Icons.help,
                   onClicked: () => selectedItem(context, 4)),
-              
             ],
           )),
         ),
