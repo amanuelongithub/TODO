@@ -39,7 +39,6 @@ class NoteDatabase {
 CREATE TABLE $tableNote (
       ${NoteFields.id} $idType,
       ${NoteFields.isImportant} $boolType,
-      ${NoteFields.number} $intType,
       ${NoteFields.title} $textType,
       ${NoteFields.description} $textType,
       ${NoteFields.time} $textType
@@ -91,7 +90,6 @@ CREATE TABLE $tableNote (
 
   Future<int> update(Note note) async {
     final db = await instance.database;
-    print('++++++++++++++++++++++++++${note.toJson()}');
     return db.update(
       tableNote,
       note.toJson(),

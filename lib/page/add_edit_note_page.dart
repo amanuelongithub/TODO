@@ -8,8 +8,10 @@ import '../model/note.dart';
 
 class AddEditNotePage extends StatefulWidget {
   final Note? note;
-
-  const AddEditNotePage({super.key, this.note});
+  const AddEditNotePage({
+    super.key,
+    this.note,
+  });
 
   @override
   State<AddEditNotePage> createState() => AddEditNotePageState();
@@ -48,7 +50,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-           widget.note != null?"Update note": "Add note ",
+            widget.note != null ? "Update note" : "Add note ",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -57,67 +59,69 @@ class AddEditNotePageState extends State<AddEditNotePage> {
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: Column(children: [
-                TextFormField(
-                  controller: titlecontroller,
-                  cursorColor: Colors.grey,
-                  maxLength: 10,
-                  decoration: InputDecoration(
-                    hintText: 'Title',
-                    fillColor: Colors.grey,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Color.fromARGB(255, 126, 126, 126),
-                          width: 2.0),
-                      borderRadius: BorderRadius.circular(15.0),
+              child: SingleChildScrollView(
+                child: Column(children: [
+                  TextFormField(
+                    controller: titlecontroller,
+                    cursorColor: Colors.grey,
+                    maxLength: 10,
+                    decoration: InputDecoration(
+                      hintText: 'Title',
+                      fillColor: Colors.grey,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 126, 126, 126),
+                            width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
                     ),
+                    validator: (value) {
+                      return value != null && value.isEmpty
+                          ? 'Enter a title please'
+                          : null;
+                    },
                   ),
-                  validator: (value) {
-                    return value != null && value.isEmpty
-                        ? 'Enter a title please'
-                        : null;
-                  },
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  controller: disccontroller,
-                  maxLines: 8,
-                  decoration: InputDecoration(
-                    hintText: 'Description',
-                    fillColor: Colors.grey,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(255, 126, 126, 126),
-                          width: 2.0),
-                      borderRadius: BorderRadius.circular(15.0),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: disccontroller,
+                    maxLines: 8,
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                      fillColor: Colors.grey,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 126, 126, 126),
+                            width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
                     ),
+                    validator: (value) {
+                      return value != null && value.isEmpty
+                          ? 'Enter a some description please'
+                          : null;
+                    },
                   ),
-                  validator: (value) {
-                    return value != null && value.isEmpty
-                        ? 'Enter a some description please'
-                        : null;
-                  },
-                ),
-                SizedBox(height: 30),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        backgroundColor: Colors.black,
-                        minimumSize: Size(150, 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
-                    onPressed: addOreditNote,
-                    child: Text(
-                      widget.note != null ? "Update" : "Save",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ))
-              ]),
+                  SizedBox(height: 30),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                          backgroundColor: Colors.black,
+                          minimumSize: Size(150, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20))),
+                      onPressed: addOreditNote,
+                      child: Text(
+                        widget.note != null ? "Update" : "Save",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ))
+                ]),
+              ),
             )));
   }
 
@@ -135,16 +139,13 @@ class AddEditNotePageState extends State<AddEditNotePage> {
       titlecontroller.text = '';
       disccontroller.text = '';
       Navigator.of(context).pop();
-    } else {
-      print("Form is not valid!");
     }
   }
 
   Future updateNote() async {
     final note = widget.note!.copy(
       isImportant: true,
-      number: 2,
-      title: titlecontroller.text,
+       title: titlecontroller.text,
       desprecation: disccontroller.text,
     );
     await NoteDatabase.instance.update(note);
@@ -154,8 +155,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
     final note = Note(
       title: titlecontroller.text,
       isImportant: true,
-      number: 1,
-      desprecation: disccontroller.text,
+       desprecation: disccontroller.text,
       createdTime: DateTime.now(),
     );
 

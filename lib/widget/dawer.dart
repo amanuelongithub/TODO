@@ -11,87 +11,90 @@ class NavigationDrawerWidget extends StatelessWidget {
     return ClipRRect(
       borderRadius: const BorderRadius.only(bottomRight: Radius.circular(0)),
       child: Drawer(
-        child: Material(
-            child: Column(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              height: 180,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromARGB(255, 225, 225, 225)),
-                  padding: const EdgeInsets.all(25.0),
-                  child: Text(
-                    "TODO",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Efimah",
+        child: SingleChildScrollView(
+          child: Material(
+              child: Column(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                height: 180,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color.fromARGB(255, 225, 225, 225)),
+                    padding: const EdgeInsets.all(25.0),
+                    child: Text(
+                      "TODO",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Efimah",
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            buildMenuItem(
-                context: context,
-                text: 'Home',
-                size: 20,
-                icons: Icons.home,
-                onClicked: () => selectedItem(context, 0)),
-            const SizedBox(
-              height: 15,
-            ),
-            buildMenuItem(
-                context: context,
-                text: 'Favourites',
-                size: 20,
-                icons: Icons.favorite,
-                onClicked: () => selectedItem(context, 2)),
-            const SizedBox(
-              height: 10,
-            ),
-            buildMenuItem(
-                context: context,
-                text: 'Recycle bin',
-                size: 20,
-                icons: Icons.recycling_outlined,
-                onClicked: () => selectedItem(context, 2)),
-            const SizedBox(
-              height: 10,
-            ),
-            Divider(),
-            buildMenuItem(
-                context: context,
-                text: 'Setting',
-                size: 20,
-                icons: Icons.settings,
-                onClicked: () => selectedItem(context, 4)),
-            const SizedBox(
-              height: 10,
-            ),
-            buildMenuItem(
-                context: context,
-                text: 'Help',
-                size: 20,
-                icons: Icons.help,
-                onClicked: () => selectedItem(context, 4)),
-          ],
-        )),
+              const SizedBox(
+                height: 10,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              buildMenuItem(
+                  context: context,
+                  text: 'Home',
+                  size: 20,
+                  icons: Icons.home,
+                  onClicked: () => selectedItem(context, 0)),
+              const SizedBox(
+                height: 15,
+              ),
+              buildMenuItem(
+                  context: context,
+                  text: 'Favourites',
+                  size: 20,
+                  icons: Icons.favorite,
+                  onClicked: () => selectedItem(context, 2)),
+              const SizedBox(
+                height: 10,
+              ),
+              buildMenuItem(
+                  context: context,
+                  text: 'Recycle bin',
+                  size: 20,
+                  icons: Icons.recycling_outlined,
+                  onClicked: () => selectedItem(context, 2)),
+              const SizedBox(
+                height: 10,
+              ),
+              Divider(),
+              buildMenuItem(
+                  context: context,
+                  text: 'Setting',
+                  size: 20,
+                  icons: Icons.settings,
+                  onClicked: () => selectedItem(context, 4)),
+              const SizedBox(
+                height: 10,
+              ),
+              buildMenuItem(
+                  context: context,
+                  text: 'Help',
+                  size: 20,
+                  icons: Icons.help,
+                  onClicked: () => selectedItem(context, 4)),
+              
+            ],
+          )),
+        ),
       ),
     );
   }

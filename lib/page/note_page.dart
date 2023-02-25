@@ -78,6 +78,7 @@ class _NotesPageState extends State<NotesPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: Colors.black,
         onPressed: () async {
+          int val = notes.length == null ? 0 : notes.length;
           await Navigator.push(
             context,
             CupertinoPageRoute(
@@ -94,30 +95,32 @@ class _NotesPageState extends State<NotesPage> {
     );
   }
 
-  Widget buildNotes() => GridView.builder(
-        itemCount: notes.length,
-        padding: EdgeInsets.all(10),
-        itemBuilder: (_, index) {
-          final note = notes[index];
-          return GestureDetector(
-            onTap: () async {
-              await Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => NoteDetailPage(noteId: note.id!),
-                ),
-              );
-              // await CupertinoPageRoute(
-              //     builder: (context) => );
+  Widget buildNotes() => OrientationBuilder(builder: (context, orientation) {
+        final isPortrait = orientation == Orientation.portrait;
+        final isMobile = MediaQuery.of(context).size.shortestSide < 600;
 
-              // await Navigator.of(context).push(MaterialPageRoute(
-              //     builder: (context) => ));
-              refreshNotes();
-            },
-            child: NoteCardWidget(note: note, index: index),
-          );
-        },
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisSpacing: 20, crossAxisSpacing: 20),
-      );
+        return GridView.builder(
+          itemCount: notes.length,
+          padding: EdgeInsets.all(10),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: isPortrait ? 2 : 3,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 20),
+          itemBuilder: (_, index) {
+            final note = notes[index];
+            return GestureDetector(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => NoteDetailPage(noteId: note.id!),
+                  ),
+                );
+                refreshNotes();
+              },
+              child: NoteCardWidget(note: note, index: index),
+            );
+          },
+        );
+      });
 }
