@@ -85,7 +85,6 @@ class _NotesPageState extends State<NotesPage> {
               builder: (context) => AddEditNotePage(),
             ),
           );
-          // await CupertinoPageRoute(builder: (context) => AddEditNotePage());
           refreshNotes();
         },
         child: Icon(
@@ -97,8 +96,6 @@ class _NotesPageState extends State<NotesPage> {
 
   Widget buildNotes() => OrientationBuilder(builder: (context, orientation) {
         final isPortrait = orientation == Orientation.portrait;
-        final isMobile = MediaQuery.of(context).size.shortestSide < 600;
-
         return GridView.builder(
           itemCount: notes.length,
           padding: EdgeInsets.all(10),

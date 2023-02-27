@@ -42,7 +42,7 @@ class Note_DetailPageState extends State<NoteDetailPage> {
             "Detaile",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          actions: [editButton(), deleteButton()],
+          actions: [isImportantButton(), editButton(), deleteButton()],
         ),
         body: isLoading
             ? Center(
@@ -126,6 +126,25 @@ class Note_DetailPageState extends State<NoteDetailPage> {
           ),
           child: Icon(
             Icons.delete,
+            color: Colors.black,
+          ),
+        ),
+      );
+
+  Widget isImportantButton() => IconButton(
+        onPressed: () async {
+          await NoteDatabase.instance.delete(widget.noteId);
+          Navigator.pop(context);
+        },
+        icon: Container(
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: Color.fromARGB(255, 215, 215, 215),
+          ),
+          child: Icon(
+            Icons.bookmark_outline,
             color: Colors.black,
           ),
         ),

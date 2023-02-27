@@ -35,13 +35,15 @@ class _NoteCardWidgetState extends State<NoteCardWidget> {
             height: 20,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: Colors.black, borderRadius: BorderRadius.circular(5)),
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(5)),
             child: Text(
               widget.note.id.toString(),
-              style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Expanded(
