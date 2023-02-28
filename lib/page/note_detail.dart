@@ -21,7 +21,6 @@ class Note_DetailPageState extends State<NoteDetailPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     refreshNote();
   }
@@ -29,7 +28,7 @@ class Note_DetailPageState extends State<NoteDetailPage> {
   Future refreshNote() async {
     setState(() => isLoading = true);
 
-    this.note = await NoteDatabase.instance.readNote(widget.noteId);
+    note = await NoteDatabase.instance.readNote(widget.noteId);
 
     setState(() => isLoading = false);
   }
