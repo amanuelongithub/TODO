@@ -143,7 +143,9 @@ class Note_DetailPageState extends State<NoteDetailPage> {
             color: Color.fromARGB(255, 215, 215, 215),
           ),
           child: Icon(
-            Icons.bookmark_outline,
+            note.isImportant
+                ? Icons.bookmark_added_rounded
+                : Icons.bookmark_outline_rounded,
             color: Colors.black,
           ),
         ),
