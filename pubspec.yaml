@@ -32,7 +32,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-
+  lottie: ^2.2.0
+  sqflite: ^2.2.2
+  
 dev_dependencies:
   animated_splash_screen: ^1.3.0
   flutter_launcher_icons: ^0.11.0
@@ -41,8 +43,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   intl: ^0.18.0
-  lottie: ^2.2.0
-  sqflite: ^2.2.2
 
 flutter_icons:
   android: true
