@@ -30,11 +30,11 @@ class NoteDatabase {
   }
 
   Future _createDB(Database db, int version) async {
-    final idType = ' INTEGER PRIMARY KEY AUTOINCREMENT';
-    final textType = 'TEXT NOT NULL';
-    final boolType = 'BOOLEAN NOT NULL';
-    final intType = 'INTEGER NOT NULL';
-    print("...createing table.....");
+    const idType = ' INTEGER PRIMARY KEY AUTOINCREMENT';
+    const textType = 'TEXT NOT NULL';
+    const boolType = 'BOOLEAN NOT NULL';
+    // final intType = 'INTEGER NOT NULL';
+    // print("...createing table.....");
     await db.execute('''
 CREATE TABLE $tableNote (
       ${NoteFields.id} $idType,
@@ -81,7 +81,7 @@ CREATE TABLE $tableNote (
   Future<List<Note>> readAllNote() async {
     final db = await instance.database;
 
-    final orderby = '${NoteFields.time} ASC';
+    const orderby = '${NoteFields.time} ASC';
 
     final result = await db.query(tableNote, orderBy: orderby);
 

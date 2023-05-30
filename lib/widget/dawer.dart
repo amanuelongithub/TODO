@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   const NavigationDrawerWidget({super.key});
@@ -19,7 +18,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 height: 180,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: const Color.fromARGB(255, 0, 0, 0),
                   borderRadius: BorderRadius.circular(0),
                 ),
                 child: Padding(
@@ -28,9 +27,9 @@ class NavigationDrawerWidget extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(255, 225, 225, 225)),
+                        color: const Color.fromARGB(255, 225, 225, 225)),
                     padding: const EdgeInsets.all(25.0),
-                    child: Text(
+                    child:const Text(
                       "TODO",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -75,7 +74,7 @@ class NavigationDrawerWidget extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Divider(),
+              const Divider(),
               buildMenuItem(
                   context: context,
                   text: 'Setting',
@@ -104,7 +103,7 @@ class NavigationDrawerWidget extends StatelessWidget {
       IconData? icons,
       VoidCallback? onClicked,
       BuildContext? context}) {
-    final color = Color.fromARGB(255, 130, 130, 130);
+    const color = Color.fromARGB(255, 130, 130, 130);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -113,14 +112,14 @@ class NavigationDrawerWidget extends StatelessWidget {
         onTap: onClicked,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         tileColor:
-            icons == Icons.home ? Color.fromARGB(141, 207, 207, 207) : null,
+            icons == Icons.home ? const Color.fromARGB(141, 207, 207, 207) : null,
         leading: Container(
             width: 30,
             height: 30,
             decoration: BoxDecoration(
                 color: icons == Icons.home
                     ? Colors.black
-                    : Color.fromARGB(255, 215, 215, 215),
+                    : const Color.fromARGB(255, 215, 215, 215),
                 borderRadius: BorderRadius.circular(8)),
             child: Icon(
               icons,

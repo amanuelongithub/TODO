@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import '../db/note_database.dart';
 import '../model/note.dart';
@@ -37,48 +35,48 @@ class Note_DetailPageState extends State<NoteDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title:const Text(
             "Detaile",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           actions: [isImportantButton(), editButton(), deleteButton()],
         ),
         body: isLoading
-            ? Center(
+            ?const Center(
                 child: CircularProgressIndicator(),
               )
             : Padding(
-                padding: EdgeInsets.all(12),
+                padding:const EdgeInsets.all(12),
                 child: ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8),
+                  padding:const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     Text(
                       note.title,
-                      style: TextStyle(
+                      style:const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                   const SizedBox(
                       height: 8,
                     ),
                     Text(
                       DateFormat.yMMMd().format(note.createdTime),
-                      style: TextStyle(),
+                      style:const TextStyle(),
                     ),
-                    SizedBox(
+                  const  SizedBox(
                       height: 8,
                     ),
                     Container(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height / 1.5,
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 221, 221, 221),
+                          color: const Color.fromARGB(255, 221, 221, 221),
                           borderRadius: BorderRadius.circular(15)),
                       child: Text(
                         note.desprecation,
-                        style: TextStyle(fontSize: 18, color: Colors.black87),
+                        style:const  TextStyle(fontSize: 18, color: Colors.black87),
                       ),
                     )
                   ],
@@ -103,9 +101,9 @@ class Note_DetailPageState extends State<NoteDetailPage> {
           height: 30,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Color.fromARGB(255, 215, 215, 215),
+            color: const Color.fromARGB(255, 215, 215, 215),
           ),
-          child: Icon(
+          child: const Icon(
             Icons.edit,
             color: Colors.black,
           ),
@@ -114,16 +112,16 @@ class Note_DetailPageState extends State<NoteDetailPage> {
   Widget deleteButton() => IconButton(
         onPressed: () async {
           await NoteDatabase.instance.delete(widget.noteId);
-          Navigator.pop(context);
+          if(mounted){Navigator.pop(context);}
         },
         icon: Container(
           width: 30,
           height: 30,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Color.fromARGB(255, 215, 215, 215),
+            color: const Color.fromARGB(255, 215, 215, 215),
           ),
-          child: Icon(
+          child:const Icon(
             Icons.delete,
             color: Colors.black,
           ),
@@ -133,14 +131,14 @@ class Note_DetailPageState extends State<NoteDetailPage> {
   Widget isImportantButton() => IconButton(
         onPressed: () async {
           await NoteDatabase.instance.delete(widget.noteId);
-          Navigator.pop(context);
+          if(mounted){Navigator.pop(context);}
         },
         icon: Container(
           width: 30,
           height: 30,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Color.fromARGB(255, 215, 215, 215),
+            color: const Color.fromARGB(255, 215, 215, 215),
           ),
           child: Icon(
             note.isImportant

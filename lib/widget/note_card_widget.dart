@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../model/note.dart';
 
 class NoteCardWidget extends StatefulWidget {
@@ -23,10 +19,10 @@ class _NoteCardWidgetState extends State<NoteCardWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 212, 212, 212),
+        color: const Color.fromARGB(255, 212, 212, 212),
         borderRadius: BorderRadius.circular(15),
       ),
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -55,14 +51,14 @@ class _NoteCardWidgetState extends State<NoteCardWidget> {
                 children: [
                   Text(
                     widget.note.title.toUpperCase(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.note.createdTime.toString(),
-                    style: TextStyle(color: Colors.black26, fontSize: 16),
+                    style:const TextStyle(color: Colors.black26, fontSize: 16),
                   ),
                 ],
               ),

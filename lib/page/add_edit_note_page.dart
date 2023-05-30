@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:todo_app/db/note_database.dart';
 
 import '../model/note.dart';
@@ -51,7 +48,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
         appBar: AppBar(
           title: Text(
             widget.note != null ? "Update note" : "Add note ",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         body: Form(
@@ -83,7 +80,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                           : null;
                     },
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextFormField(
                     controller: disccontroller,
                     maxLines: 8,
@@ -93,7 +90,7 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                             color: Color.fromARGB(255, 126, 126, 126),
                             width: 2.0),
                         borderRadius: BorderRadius.circular(15.0),
@@ -105,19 +102,19 @@ class AddEditNotePageState extends State<AddEditNotePage> {
                           : null;
                     },
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           elevation: 0,
                           shadowColor: Colors.transparent,
                           backgroundColor: Colors.black,
-                          minimumSize: Size(150, 50),
+                          minimumSize: const Size(150, 50),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20))),
                       onPressed: addOreditNote,
                       child: Text(
                         widget.note != null ? "Update" : "Save",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ))
                 ]),
@@ -138,7 +135,9 @@ class AddEditNotePageState extends State<AddEditNotePage> {
       }
       titlecontroller.text = '';
       disccontroller.text = '';
-      Navigator.of(context).pop();
+     if(mounted){
+       Navigator.of(context).pop();
+     }
     }
   }
 

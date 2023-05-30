@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:todo_app/db/note_database.dart';
 import 'package:todo_app/model/note.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:todo_app/page/add_edit_note_page.dart';
 import 'package:todo_app/page/note_detail.dart';
 import 'package:lottie/lottie.dart';
@@ -27,7 +24,7 @@ class _LottieDialogState extends State<LottieDialog>
     super.initState();
 
     lottieController =
-        AnimationController(duration: Duration(seconds: 2), vsync: this);
+        AnimationController(duration: const Duration(seconds: 2), vsync: this);
     lottieController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         Navigator.pop(context);
@@ -57,8 +54,8 @@ class _LottieDialogState extends State<LottieDialog>
           height: 120,
           width: 120,
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 12),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 12),
           child: Text(
             "Enjoy Your Order",
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
@@ -107,7 +104,7 @@ class _NotesPageState extends State<NotesPage>
     setState(() => isLoading = true);
 
     notes = await NoteDatabase.instance.readAllNote();
-    print("....note length...." + notes.length.toString());
+    // print("....note length...." + notes.length.toString());
 
     setState(() => isLoading = false);
   }
@@ -116,22 +113,22 @@ class _NotesPageState extends State<NotesPage>
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: NavigationDrawerWidget(),
+      drawer:const NavigationDrawerWidget(),
       appBar: AppBar(
         elevation: 0,
         leading: InkResponse(
             radius: 20,
             splashColor: Colors.grey,
             onTap: () => _scaffoldKey.currentState?.openDrawer(),
-            child: Icon(Icons.menu, color: Colors.white)),
-        title: Text(
+            child:const Icon(Icons.menu, color: Colors.white)),
+        title:const Text(
           "TODO",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
       ),
       body: Center(
           child: isLoading
-              ? CircularProgressIndicator(
+              ? const CircularProgressIndicator(
                   color: Colors.black,
                 )
               : notes.isEmpty
@@ -149,7 +146,7 @@ class _NotesPageState extends State<NotesPage>
                           height: 120,
                           width: 120,
                         ),
-                        Text(
+                        const Text(
                           "Empty Note",
                           style: TextStyle(
                               fontSize: 20,
@@ -163,16 +160,16 @@ class _NotesPageState extends State<NotesPage>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: Colors.black,
         onPressed: () async {
-          int val = notes.length == null ? 0 : notes.length;
+          // int val = notes.length;
           await Navigator.push(
             context,
             CupertinoPageRoute(
-              builder: (context) => AddEditNotePage(),
+              builder: (context) => const AddEditNotePage(),
             ),
           );
           refreshNotes();
         },
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),
@@ -183,7 +180,7 @@ class _NotesPageState extends State<NotesPage>
         final isPortrait = orientation == Orientation.portrait;
         return GridView.builder(
           itemCount: notes.length,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: isPortrait ? 2 : 3,
               mainAxisSpacing: 20,
