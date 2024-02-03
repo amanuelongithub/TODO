@@ -10,10 +10,10 @@ class NoteDetailPage extends StatefulWidget {
   const NoteDetailPage({super.key, required this.noteId});
 
   @override
-  State<NoteDetailPage> createState() => Note_DetailPageState();
+  State<NoteDetailPage> createState() => NoteDetailPageState();
 }
 
-class Note_DetailPageState extends State<NoteDetailPage> {
+class NoteDetailPageState extends State<NoteDetailPage> {
   late Note note;
   bool isLoading = false;
 
