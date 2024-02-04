@@ -15,16 +15,14 @@ class LottieDialog extends StatefulWidget {
   State<LottieDialog> createState() => _LottieDialogState();
 }
 
-class _LottieDialogState extends State<LottieDialog>
-    with SingleTickerProviderStateMixin {
+class _LottieDialogState extends State<LottieDialog> with SingleTickerProviderStateMixin {
   late AnimationController lottieController;
 
   @override
   void initState() {
     super.initState();
 
-    lottieController =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    lottieController = AnimationController(duration: const Duration(seconds: 2), vsync: this);
     lottieController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         Navigator.pop(context);
@@ -73,10 +71,9 @@ class NotesPage extends StatefulWidget {
   State<NotesPage> createState() => _NotesPageState();
 }
 
-class _NotesPageState extends State<NotesPage>
-    with SingleTickerProviderStateMixin {
+class _NotesPageState extends State<NotesPage> with SingleTickerProviderStateMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  late List<Note> notes;
+  List<Note> notes = [];
   bool isLoading = false;
   late AnimationController lottieController;
 
@@ -84,8 +81,7 @@ class _NotesPageState extends State<NotesPage>
   void initState() {
     super.initState();
     refreshNotes();
-    lottieController =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    lottieController = AnimationController(duration: const Duration(seconds: 2), vsync: this);
     lottieController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         Navigator.pop(context);
@@ -113,15 +109,11 @@ class _NotesPageState extends State<NotesPage>
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer:const NavigationDrawerWidget(),
+      drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
         elevation: 0,
-        leading: InkResponse(
-            radius: 20,
-            splashColor: Colors.grey,
-            onTap: () => _scaffoldKey.currentState?.openDrawer(),
-            child:const Icon(Icons.menu, color: Colors.white)),
-        title:const Text(
+        leading: InkResponse(radius: 20, splashColor: Colors.grey, onTap: () => _scaffoldKey.currentState?.openDrawer(), child: const Icon(Icons.menu, color: Colors.white)),
+        title: const Text(
           "TODO",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
@@ -148,9 +140,7 @@ class _NotesPageState extends State<NotesPage>
                         ),
                         const Text(
                           "Empty Note",
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromARGB(203, 131, 131, 131)),
+                          style: TextStyle(fontSize: 20, color: Color.fromARGB(203, 131, 131, 131)),
                         ),
                       ],
                     )
@@ -181,10 +171,7 @@ class _NotesPageState extends State<NotesPage>
         return GridView.builder(
           itemCount: notes.length,
           padding: const EdgeInsets.all(10),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: isPortrait ? 2 : 3,
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: isPortrait ? 2 : 3, mainAxisSpacing: 20, crossAxisSpacing: 20),
           itemBuilder: (_, index) {
             final note = notes[index];
             return GestureDetector(

@@ -14,7 +14,7 @@ class NoteDetailPage extends StatefulWidget {
 }
 
 class NoteDetailPageState extends State<NoteDetailPage> {
-  late Note note;
+  Note? note;
   bool isLoading = false;
 
   @override
@@ -27,7 +27,8 @@ class NoteDetailPageState extends State<NoteDetailPage> {
     setState(() => isLoading = true);
 
     note = await NoteDatabase.instance.readNote(widget.noteId);
-
+    print('nots');
+    print(note!.toJson());
     setState(() => isLoading = false);
   }
 
@@ -35,48 +36,50 @@ class NoteDetailPageState extends State<NoteDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title:const Text(
+          title: const Text(
             "Detaile",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          actions: [isImportantButton(), editButton(), deleteButton()],
+          actions: [
+            // isImportantButton(),
+            editButton(),
+            deleteButton()
+          ],
         ),
         body: isLoading
-            ?const Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : Padding(
-                padding:const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: ListView(
-                  padding:const EdgeInsets.symmetric(vertical: 8),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     Text(
-                      note.title,
-                      style:const TextStyle(
+                      note!.title,
+                      style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                   const SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
-                      DateFormat.yMMMd().format(note.createdTime),
-                      style:const TextStyle(),
+                      DateFormat.yMMMd().format(note!.createdTime),
+                      style: const TextStyle(),
                     ),
-                  const  SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Container(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height / 1.5,
                       padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 221, 221, 221),
-                          borderRadius: BorderRadius.circular(15)),
+                      decoration: BoxDecoration(color: const Color.fromARGB(255, 221, 221, 221), borderRadius: BorderRadius.circular(15)),
                       child: Text(
-                        note.desprecation,
-                        style:const  TextStyle(fontSize: 18, color: Colors.black87),
+                        note!.desprecation,
+                        style: const TextStyle(fontSize: 18, color: Colors.black87),
                       ),
                     )
                   ],
@@ -112,7 +115,9 @@ class NoteDetailPageState extends State<NoteDetailPage> {
   Widget deleteButton() => IconButton(
         onPressed: () async {
           await NoteDatabase.instance.delete(widget.noteId);
-          if(mounted){Navigator.pop(context);}
+          if (mounted) {
+            Navigator.pop(context);
+          }
         },
         icon: Container(
           width: 30,
@@ -121,7 +126,7 @@ class NoteDetailPageState extends State<NoteDetailPage> {
             borderRadius: BorderRadius.circular(8),
             color: const Color.fromARGB(255, 215, 215, 215),
           ),
-          child:const Icon(
+          child: const Icon(
             Icons.delete,
             color: Colors.black,
           ),
@@ -131,7 +136,9 @@ class NoteDetailPageState extends State<NoteDetailPage> {
   Widget isImportantButton() => IconButton(
         onPressed: () async {
           await NoteDatabase.instance.delete(widget.noteId);
-          if(mounted){Navigator.pop(context);}
+          if (mounted) {
+            Navigator.pop(context);
+          }
         },
         icon: Container(
           width: 30,
@@ -141,9 +148,7 @@ class NoteDetailPageState extends State<NoteDetailPage> {
             color: const Color.fromARGB(255, 215, 215, 215),
           ),
           child: Icon(
-            note.isImportant
-                ? Icons.bookmark_added_rounded
-                : Icons.bookmark_outline_rounded,
+            note!.isImportant ? Icons.bookmark_added_rounded : Icons.bookmark_outline_rounded,
             color: Colors.black,
           ),
         ),
