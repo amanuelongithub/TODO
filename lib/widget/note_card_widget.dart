@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../model/note.dart';
 
 class NoteCardWidget extends StatefulWidget {
@@ -49,7 +50,7 @@ class _NoteCardWidgetState extends State<NoteCardWidget> {
                 children: [
                   Text(
                     widget.note.title.toUpperCase(),
-                    style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 25, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 16.sp, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.note.createdTime.toString(),

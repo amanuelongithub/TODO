@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/db/note_database.dart';
 import 'package:todo_app/model/note.dart';
 import 'package:todo_app/page/add_edit_note_page.dart';
@@ -64,6 +65,7 @@ class _LottieDialogState extends State<LottieDialog> with SingleTickerProviderSt
   }
 }
 
+
 class NotesPage extends StatefulWidget {
   const NotesPage({super.key});
 
@@ -107,15 +109,16 @@ class _NotesPageState extends State<NotesPage> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
+    // ScreenUtil.setContext(context);
     return Scaffold(
       key: _scaffoldKey,
       drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
         elevation: 0,
         leading: InkResponse(radius: 20, splashColor: Colors.grey, onTap: () => _scaffoldKey.currentState?.openDrawer(), child: const Icon(Icons.menu, color: Colors.white)),
-        title: const Text(
+        title: Text(
           "TODO",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
         ),
       ),
       body: Center(

@@ -8,4 +8,4 @@ A new Flutter project.
 - Language
 - Theme
 - Task Category
-- Responsive with cool Animations
+- Adapting screen with cool Animations
