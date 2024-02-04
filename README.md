@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## This App Future
 
-Notification
-Language
-Theme
-Task Category
+- Notification
+- Language
+- Theme
+- Task Category
