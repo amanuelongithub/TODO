@@ -30,11 +30,9 @@ class _NoteCardWidgetState extends State<NoteCardWidget> {
             width: 20,
             height: 20,
             alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(5)),
+            decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(5)),
             child: Text(
-              widget.note.id.toString(),
+              (widget.index + 1).toString(),
               style: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 15,
@@ -51,14 +49,11 @@ class _NoteCardWidgetState extends State<NoteCardWidget> {
                 children: [
                   Text(
                     widget.note.title.toUpperCase(),
-                    style: const TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
+                    style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.note.createdTime.toString(),
-                    style:const TextStyle(color: Colors.black26, fontSize: 16),
+                    style: const TextStyle(color: Colors.black26, fontSize: 16),
                   ),
                 ],
               ),

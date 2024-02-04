@@ -17,16 +17,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Cochin',
-        
         appBarTheme: const AppBarTheme(
             elevation: 0,
             backgroundColor: Colors.black,
-            
             titleTextStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontFamily: 'Efimah',
-                fontWeight: FontWeight.bold)),
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
         primaryColor: Colors.black,
       ),
       home: const SplashScreen(),
